@@ -1,8 +1,26 @@
-# React + Vite
+# Arabic Text-to-Speech Web App (Natiq)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React web application that enables users to enter Arabic text, which is then converted to audio using an electronic voice. The last word of the text is repeated three times for emphasis.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Technologies Used
+- React
+- React Router
+- Axios
+- HTML
+- CSS
+- RDI's Natiq Service
+
+# Screenshots
+![mobile (2)](https://github.com/youssefsaeed555/Natiq/assets/81886165/93b2b410-dea7-462e-8eea-5a915747b12d)
+
+# Installation
+- git clone https://github.com/youssefsaeed555/Natiq
+- cd Natiq
+- npm install
+- npm run dev
+- Open your web browser and visit http://localhost:5173/
+
+
+# Live Demo
+You can access a live demo of the Arabic Text-to-Speech Web App at https://natiq-ten.vercel.app/natiq.
