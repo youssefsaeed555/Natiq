@@ -1,0 +1,120 @@
+.natiqPage {
+  background-image: url("../../assets/images/cover3.avif");
+  background-size: cover;
+  opacity: 0.9;
+}
+
+.natiq .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.natiqHeading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 25px 0;
+}
+@media (max-width: 767px) {
+  .natiqHeading {
+    padding: 15px 0;
+  }
+}
+.natiq .natiqText {
+  outline: none;
+  border-bottom: 2px solid rgb(0, 162, 255);
+  background-color: transparent;
+  padding: 10px;
+  color: black;
+  background-color: #eee;
+  padding-bottom: 300px;
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 80%;
+}
+@media (max-width: 767px) {
+  .natiq .natiqText {
+    width: 100%;
+  }
+}
+
+.natiq .natiqContainer::after {
+  content: "متوفر باللغه العربيه";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: black;
+}
+
+.natiq input:focus {
+  border-bottom: 2px solid #065291;
+  transition: 0.3s;
+}
+.natiq input:focus::placeholder {
+  color: #bdbcbc;
+  transition: 0.3s;
+}
+.natiq .buttons {
+  background-color: rgb(0, 162, 255);
+  width: 50%;
+  border-radius: 50px;
+  position: relative;
+  bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .natiq .buttons {
+    width: 90%;
+    border-radius: 12px;
+  }
+}
+.natiq .buttons span {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #747474;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.natiq .buttons button {
+  background-color: #065291;
+  direction: ltr;
+  padding: 10px 20px;
+  width: fit-content;
+  color: white;
+  margin: 18px auto;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.3s;
+  cursor: pointer;
+  height: 44px;
+  min-width: 144px;
+}
+@media (max-width: 767px) {
+  .natiq .buttons button {
+    margin: 10px auto;
+  }
+}
+.natiq .buttons button i {
+  direction: rtl;
+  margin-right: 10px;
+}
+.natiq .buttons button:hover {
+  background-color: #0b77ca;
+}
+.natiq .audio {
+  height: 69px;
+}
+@media (max-width: 767px) {
+  .natiq .audio {
+    height: 65px;
+    margin-top: -25px;
+  }
+}
