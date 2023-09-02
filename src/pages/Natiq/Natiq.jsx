@@ -43,7 +43,7 @@ function Natiq() {
     } catch (err) {
       setLoading(false);
       const errorMessage =
-        err?.message || err.response?.data?.description || "An error occurred.";
+        err.response.data?.description || err?.message || "An error occurred.";
       toast.error(errorMessage);
     }
   };
