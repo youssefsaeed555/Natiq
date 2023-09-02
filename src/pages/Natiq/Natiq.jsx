@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState, useRef } from "react";
-import { CirclesWithBar } from "react-loader-spinner";
-import styles from "./natiq.module.css";
 import { ToastContainer, toast } from "react-toastify";
+import styles from "./natiq.module.css";
+import Loader from "../../components/shared/Loader";
+import Buttons from "../../components/shared/Buttons";
+const BaseUrl = "https://echo-6sdzv54itq-uc.a.run.app";
 
 function Natiq() {
   const [text, setText] = useState("");
@@ -21,36 +23,36 @@ function Natiq() {
 
   const callNatiq = async () => {
     setLoading(true);
+    setButtonClicked(true);
+
     const textData = text;
-    // Get the last word from the input text
     const words = textData.split(" ");
     const lastWord = words[words.length - 1];
     const repeatedLastWord = `${lastWord} ${lastWord}`;
-
-    // Combine the original audio data with the repeated words
     const finalAudioData = `${text} ${repeatedLastWord}`;
-    var formdata = { text: finalAudioData };
-    setButtonClicked(true);
 
     try {
-      const { data } = await axios.post(
-        "https://echo-6sdzv54itq-uc.a.run.app/natiq",
-        formdata
-      );
+      const { data } = await axios.post(`${BaseUrl}/natiq`, {
+        text: finalAudioData,
+      });
       const audioData = data.wave.replace(/-/g, "+").replace(/_/g, "/");
       setAudioURL(audioData);
       ref.current.disabled = true;
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      toast.error(err.response.data.description);
+      if (err?.message) {
+        toast.error(err.message);
+      }
+      if (err.response?.data) {
+        toast.error(err.response.data.description);
+      }
     }
   };
 
   const handleKeyDown = (e) => {
     const inputValue = e.target.value;
     const arabicPattern = /^[\u0600-\u06FF\s]*$/;
-
     if (
       ((inputValue !== "" && !arabicPattern.test(e.key)) ||
         (inputValue === "" && !arabicPattern.test(e.key))) &&
@@ -76,36 +78,26 @@ function Natiq() {
           />
           <div className={`${styles.buttons}`}>
             {loading ? (
-              <button className="flex gap-2">
-                <CirclesWithBar
-                  height="30"
-                  width="30"
-                  color="white"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  outerCircleColor=""
-                  innerCircleColor=""
-                  barColor=""
-                  ariaLabel="circles-with-bar-loading"
-                />
-                تحميل
-              </button>
+              <Buttons
+                style={"flex gap-2"}
+                children={<Loader></Loader>}
+                text={"تحميل"}
+              />
             ) : (
-              <button
-                onClick={callNatiq}
+              <Buttons
+                onClickHandler={callNatiq}
                 disabled={text === "" || buttonClicked}
-              >
-                <i className="fa-solid fa-play"></i>
-                استماع
-              </button>
+                children={<i className="fa-solid fa-play"></i>}
+                text={"استماع"}
+              />
             )}
-
             <span>متوفر باللغه العربيه فقط</span>
-            <button type="reset" onClick={remove}>
-              <i className="fa-solid fa-rotate-right"></i>
-              تجربه اخري
-            </button>
+            <Buttons
+              onClickHandler={remove}
+              children={<i className="fa-solid fa-rotate-right"></i>}
+              text={"تجربه اخري"}
+              type="reset"
+            />
           </div>
           <div className={`${styles.audio}`}>
             {audioURL && (
