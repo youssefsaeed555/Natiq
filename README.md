@@ -5,10 +5,11 @@ This is a simple React web application that enables users to enter Arabic text, 
 
 # Technologies Used
 - React
-- React Router
+- React Router Dom
 - Axios
-- HTML
 - CSS
+- Tailwind
+- Daisyui
 - RDI's Natiq Service
 
 # Screenshots
@@ -23,4 +24,4 @@ This is a simple React web application that enables users to enter Arabic text, 
 
 
 # Live Demo
-You can access a live demo of the Arabic Text-to-Speech Web App at https://natiq-ten.vercel.app/natiq.
+You can access a live demo of the Arabic Text-to-Speech Web App at https://natiq-ten.vercel.app/.
