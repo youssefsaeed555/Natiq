@@ -114,7 +114,7 @@
 }
 @media (max-width: 767px) {
   .natiq .audio {
-    height: 65px;
-    margin-top: -25px;
+    margin-top: -10px;
+    margin-bottom: 10px;
   }
 }
