@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import styles from "./natiq.module.css";
 import Loader from "../../components/shared/Loader";
 import Buttons from "../../components/shared/Buttons";
+
 const BaseUrl = "https://echo-6sdzv54itq-uc.a.run.app";
 
 function Natiq() {
@@ -13,7 +14,7 @@ function Natiq() {
   const [buttonClicked, setButtonClicked] = useState(false);
   const ref = useRef();
 
-  const remove = () => {
+  const resetState = () => {
     setAudioURL("");
     setText("");
     ref.current.disabled = false;
@@ -41,12 +42,9 @@ function Natiq() {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      if (err?.message) {
-        toast.error(err.message);
-      }
-      if (err.response?.data) {
-        toast.error(err.response.data.description);
-      }
+      const errorMessage =
+        err?.message || err.response?.data?.description || "An error occurred.";
+      toast.error(errorMessage);
     }
   };
 
@@ -93,7 +91,7 @@ function Natiq() {
             )}
             <span>متوفر باللغه العربيه فقط</span>
             <Buttons
-              onClickHandler={remove}
+              onClickHandler={resetState}
               children={<i className="fa-solid fa-rotate-right"></i>}
               text={"تجربه اخري"}
               type="reset"
