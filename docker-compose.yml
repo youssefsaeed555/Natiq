@@ -1,0 +1,9 @@
+version: "3"
+services:
+  react-app:
+    build: .
+    container_name: "natiq"
+    ports:
+      - "8000:4000"
+    volumes:
+      - ./src:/app/src
